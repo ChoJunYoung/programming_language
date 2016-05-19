@@ -400,13 +400,11 @@ class CuteInterpreter(object):
 
             rhs2 = pop_node_from_quote_list(rhs2);
 
-            temp = rhs1.value.next
+            if (rhs1.type is TokenType.LIST):
+                rhs1 = rhs1.value.next
+            rhs1.next = rhs2
 
-            temp.next = rhs2
-
-
-            result = create_quote_node(temp, True)
-
+            result = create_quote_node(rhs1, True)
 
             return result
 
